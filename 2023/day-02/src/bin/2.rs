@@ -24,8 +24,10 @@ impl Set {
     }
 
     fn minimal_required(sets: impl Iterator<Item = Self>) -> Self {
-        sets.fold(Set::new(), |Set { r, g, b }, set| {
-            Set { r: r.max(set.r), g: g.max(set.g), b: b.max(set.b) }
+        sets.fold(Set::new(), |Set { r, g, b }, set| Set {
+            r: r.max(set.r),
+            g: g.max(set.g),
+            b: b.max(set.b),
         })
     }
 }

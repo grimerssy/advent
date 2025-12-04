@@ -1,10 +1,10 @@
 use nom::{
+    IResult,
     branch::alt,
     bytes::complete::tag,
     character::complete::{space1, u32},
     combinator::iterator,
     sequence::separated_pair,
-    IResult,
 };
 
 fn main() {

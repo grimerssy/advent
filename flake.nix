@@ -1,26 +1,24 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    rust-overlay.url = "github:oxalica/rust-overlay";
-    flake-utils.url = "github:numtide/flake-utils";
+    # keep-sorted start block=yes case=no numeric=yes
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # keep-sorted end
   };
-  outputs = { self, nixpkgs, rust-overlay, flake-utils }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = import nixpkgs { inherit system overlays; };
-        overlays = [
-          (import rust-overlay)
-          (self: super: {
-            rust-toolchain = super.rust-bin.stable.latest.default;
-          })
-        ];
-      in {
-        devShells.default = pkgs.mkShellNoCC {
-          packages = with pkgs; [ rust-toolchain cargo-edit cargo-nextest ];
-          buildInputs = [ ];
-          nativeBuildInputs = with pkgs;
-            [ ] ++ lib.optionals stdenv.isDarwin
-            (with darwin.apple_sdk.frameworks; [ SystemConfiguration ]);
-        };
-      });
+  outputs =
+    inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [ ./nix/flake ];
+    };
 }

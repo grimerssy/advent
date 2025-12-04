@@ -1,0 +1,12 @@
+[workspace]
+resolver = "2"
+
+members = ["day-*"]
+default-members = ["day-*"]
+
+[workspace.dependencies]
+nom = "8.0.0"
+tracing = "0.1.43"
+tracing-subscriber = { version = "0.3.22", features = ["fmt", "env-filter"] }
+miette = { version = "7.6", features = ["fancy"] }
+test-log = { version = "0.2.19", features = ["trace"] }

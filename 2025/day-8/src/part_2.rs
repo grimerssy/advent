@@ -4,7 +4,7 @@ use std::{
     rc::Rc,
 };
 
-use miette::miette;
+use miette::{Context, miette};
 use nom::{
     IResult, Parser,
     bytes::complete::tag,
@@ -17,7 +17,8 @@ use nom::{
 pub fn solve(input: &str) -> miette::Result<u64> {
     let (_, boxes) = junction_boxes
         .parse(input)
-        .map_err(|err| miette!("{err}"))?;
+        .map_err(|err| miette!("{err}"))
+        .context("parse junction boxes")?;
     let circuits = boxes
         .iter()
         .map(|b| (*b, Rc::new(HashSet::from([*b]))))

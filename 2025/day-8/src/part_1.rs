@@ -4,7 +4,7 @@ use std::{
     rc::Rc,
 };
 
-use miette::miette;
+use miette::{Context, miette};
 use nom::{
     IResult, Parser,
     bytes::complete::tag,
@@ -19,7 +19,8 @@ const TAKE_LARGEST: usize = 3;
 pub fn solve(input: &str, connections: usize) -> miette::Result<u64> {
     let (_, boxes) = junction_boxes
         .parse(input)
-        .map_err(|err| miette!("{err}"))?;
+        .map_err(|err| miette!("{err}"))
+        .context("parse junction boxes")?;
     let circuits = boxes
         .iter()
         .map(|b| (*b, Rc::new(HashSet::from([*b]))))
@@ -27,12 +28,7 @@ pub fn solve(input: &str, connections: usize) -> miette::Result<u64> {
     let mut pairs = boxes
         .iter()
         .enumerate()
-        .flat_map(|(i, from)| {
-            boxes
-                .iter()
-                .take(i)
-                .map(move |to| (from, to))
-        })
+        .flat_map(|(i, from)| boxes.iter().take(i).map(move |to| (from, to)))
         .collect::<Vec<_>>();
     pairs.sort_unstable_by(|left, right| {
         JunctionBox::distance(left.0, left.1)

@@ -183,7 +183,7 @@ mod tests {
 2,3
 7,3\
 ";
-        let expected = 50;
+        let expected = 24;
         let solution = solve(input)?;
         assert_eq!(solution, expected);
         Ok(())

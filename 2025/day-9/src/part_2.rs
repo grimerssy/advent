@@ -122,10 +122,11 @@ impl Edge {
                         || (other_min_y + 1..other_max_y).contains(&self_max_y))
             }
             (false, false) => {
-                self_min_y == other_min_y && ((self_min_x + 1..self_max_x).contains(&other_min_x)
-                    || (self_min_x + 1..self_max_x).contains(&other_max_x)
-                    || (other_min_x + 1..other_max_x).contains(&self_min_x)
-                    || (other_min_x + 1..other_max_x).contains(&self_max_x))
+                self_min_y == other_min_y
+                    && ((self_min_x + 1..self_max_x).contains(&other_min_x)
+                        || (self_min_x + 1..self_max_x).contains(&other_max_x)
+                        || (other_min_x + 1..other_max_x).contains(&self_min_x)
+                        || (other_min_x + 1..other_max_x).contains(&self_max_x))
             }
             (true, false) => {
                 let self_x = self.from.x;

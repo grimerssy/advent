@@ -163,7 +163,84 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b05b61dc5112cbb17e4b6cd61790d9845d13888356391624cbe7e41efeac1e75"
 
 [[package]]
-name = "day-1"
+name = "day-01"
+version = "0.1.0"
+dependencies = [
+ "miette",
+ "nom 8.0.0",
+ "test-log",
+ "tracing",
+ "tracing-subscriber",
+]
+
+[[package]]
+name = "day-02"
+version = "0.1.0"
+dependencies = [
+ "miette",
+ "nom 8.0.0",
+ "test-log",
+ "tracing",
+ "tracing-subscriber",
+]
+
+[[package]]
+name = "day-04"
+version = "0.1.0"
+dependencies = [
+ "miette",
+ "nom 8.0.0",
+ "test-log",
+ "tracing",
+ "tracing-subscriber",
+]
+
+[[package]]
+name = "day-05"
+version = "0.1.0"
+dependencies = [
+ "miette",
+ "nom 8.0.0",
+ "test-log",
+ "tracing",
+ "tracing-subscriber",
+]
+
+[[package]]
+name = "day-06"
+version = "0.1.0"
+dependencies = [
+ "miette",
+ "nom 8.0.0",
+ "test-log",
+ "tracing",
+ "tracing-subscriber",
+]
+
+[[package]]
+name = "day-07"
+version = "0.1.0"
+dependencies = [
+ "miette",
+ "nom 8.0.0",
+ "test-log",
+ "tracing",
+ "tracing-subscriber",
+]
+
+[[package]]
+name = "day-08"
+version = "0.1.0"
+dependencies = [
+ "miette",
+ "nom 8.0.0",
+ "test-log",
+ "tracing",
+ "tracing-subscriber",
+]
+
+[[package]]
+name = "day-09"
 version = "0.1.0"
 dependencies = [
  "miette",
@@ -184,83 +261,6 @@ dependencies = [
  "tracing",
  "tracing-subscriber",
  "z3",
-]
-
-[[package]]
-name = "day-2"
-version = "0.1.0"
-dependencies = [
- "miette",
- "nom 8.0.0",
- "test-log",
- "tracing",
- "tracing-subscriber",
-]
-
-[[package]]
-name = "day-4"
-version = "0.1.0"
-dependencies = [
- "miette",
- "nom 8.0.0",
- "test-log",
- "tracing",
- "tracing-subscriber",
-]
-
-[[package]]
-name = "day-5"
-version = "0.1.0"
-dependencies = [
- "miette",
- "nom 8.0.0",
- "test-log",
- "tracing",
- "tracing-subscriber",
-]
-
-[[package]]
-name = "day-6"
-version = "0.1.0"
-dependencies = [
- "miette",
- "nom 8.0.0",
- "test-log",
- "tracing",
- "tracing-subscriber",
-]
-
-[[package]]
-name = "day-7"
-version = "0.1.0"
-dependencies = [
- "miette",
- "nom 8.0.0",
- "test-log",
- "tracing",
- "tracing-subscriber",
-]
-
-[[package]]
-name = "day-8"
-version = "0.1.0"
-dependencies = [
- "miette",
- "nom 8.0.0",
- "test-log",
- "tracing",
- "tracing-subscriber",
-]
-
-[[package]]
-name = "day-9"
-version = "0.1.0"
-dependencies = [
- "miette",
- "nom 8.0.0",
- "test-log",
- "tracing",
- "tracing-subscriber",
 ]
 
 [[package]]

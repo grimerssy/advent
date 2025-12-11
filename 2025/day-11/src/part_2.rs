@@ -88,39 +88,6 @@ fn number_of_paths_dp(
     computed
 }
 
-fn number_of_paths_rec(
-    connections: &HashMap<Device, Vec<Device>>,
-    start: &Device,
-    must_pass: &[Device],
-    end: &Device,
-) -> u64 {
-    if start == end && must_pass.is_empty() {
-        1
-    } else {
-        let modified_must_pass = if must_pass.contains(start) {
-            Some(
-                must_pass
-                    .iter()
-                    .filter(|&node| node != start)
-                    .cloned()
-                    .collect::<Vec<_>>(),
-            )
-        } else {
-            None
-        };
-        let must_pass = modified_must_pass.as_deref().unwrap_or(must_pass);
-        connections
-            .get(start)
-            .map(|outputs| {
-                outputs
-                    .iter()
-                    .map(|output| number_of_paths_rec(connections, output, must_pass, end))
-                    .sum()
-            })
-            .unwrap_or(0)
-    }
-}
-
 fn connections(input: &str) -> IResult<&str, HashMap<Device, Vec<Device>>> {
     separated_list1(
         line_ending,

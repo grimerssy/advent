@@ -9,7 +9,6 @@ use nom::{
     sequence::separated_pair,
 };
 
-#[allow(unused_variables)]
 #[tracing::instrument(skip(input), err)]
 pub fn solve(input: &str) -> miette::Result<u64> {
     let (_, connections) = connections
